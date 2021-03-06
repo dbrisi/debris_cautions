@@ -1,0 +1,96 @@
+Sub DebrisDataScraper()
+
+Dim ieObj As InternetExplorer
+Dim htmlEle As IHTMLElement
+Dim htmlEle2 As IHTMLElement
+Dim htmlEle3 As IHTMLElement
+Dim j As Integer
+Dim URLvar As String
+Dim i As Integer
+Dim k As Integer
+Dim CorrectTable As String
+
+
+i = 1
+
+Set ieObj = New InternetExplorer
+ieObj.Visible = True
+
+For j = 2 To 1003
+
+'Sheet contains all the data that must be fed into URL
+URLvar = Worksheets("races_since_1990_for_macro").Range("Q" & j).Value
+
+ieObj.navigate "https://www.racing-reference.info/race/" & URLvar & "/W"
+
+Application.Wait Now + TimeValue("00:00:04")
+
+
+Dim foundData As Boolean
+'just doing the tr sort of worked
+
+Set tables = ieObj.document.getElementsByClassName("tb")
+    
+For x = 0 To tables.Length Step 1
+    'You may need to use innerText or inner/outerHTML to find the text
+    If tables(x).innerText Like "*Caution flag breakdown:*" Then
+        'Table found, Copy the Data
+        Set Clipboard = New MSForms.DataObject
+        Clipboard.SetText tables(x).outerHTML
+        Clipboard.PutInClipboard
+        Worksheets("Sheet3").Cells(1, 1).PasteSpecial
+        foundData = True
+        Exit For 'Exit Loop since the data was found
+    End If
+Next x
+'Check if data was found after leaving the loop
+If foundData <> True Then
+    MsgBox "The Data Was Not Found on Any Tables"
+    
+Else
+
+'NOTE: 
+'Sheet3 is for temporary data pasting
+'data_output is final data location
+
+'Unmerge cells
+Sheets("Sheet3").Select
+Worksheets("Sheet3").Cells.Select
+    With Selection
+        .MergeCells = False
+    End With
+
+k = 4
+    
+Do Until Worksheets("Sheet3").Range("A" & k).Value <> ""
+
+    Worksheets("data_output").Range("B" & i).Value = Worksheets("Sheet3").Range("B" & k).Value
+    Worksheets("data_output").Range("C" & i).Value = Worksheets("Sheet3").Range("C" & k).Value
+    Worksheets("data_output").Range("D" & i).Value = Worksheets("Sheet3").Range("D" & k).Value
+    Worksheets("data_output").Range("E" & i).Value = Worksheets("Sheet3").Range("E" & k).Value
+    Worksheets("data_output").Range("F" & i).Value = Worksheets("races_since_1990_for_macro").Range("B" & j).Value
+    Worksheets("data_output").Range("G" & i).Value = Worksheets("races_since_1990_for_macro").Range("C" & j).Value
+    
+    
+    k = k + 1
+    
+    i = i + 1
+    
+Loop
+    
+    
+'Delete stuff
+Sheets("Sheet3").Select
+Worksheets("Sheet3").Cells.Select
+Selection.ClearContents
+      
+
+q = i
+
+End If
+
+
+Next j
+
+
+End Sub
