@@ -1,0 +1,37 @@
+race,first_stage_length,stage_2,stage_2_length,final_stage,stage_3_length,stage_4_length
+Daytona,60,120,60,200,80,N/A
+Atlanta,85,170,85,325,155,N/A
+Las Vegas,80,160,80,267,107,N/A
+ISM (Phoenix),75,150,75,312,162,N/A
+Auto Club,60,120,60,200,80,N/A
+Martinsville,130,260,130,500,240,N/A
+Texas,85,170,85,334,164,N/A
+Bristol,125,250,125,500,250,N/A
+Richmond,100,200,100,400,200,N/A
+Talladega,55,110,55,188,78,N/A
+Dover,120,240,120,400,160,N/A
+Kansas,80,160,80,267,107,N/A
+Charlotte,100,200 (Stage 3: 300),100,400,100,100
+Pocono,50,100,50,160,60,N/A
+Michigan,60,120,60,200,80,N/A
+Sonoma,20,40,20,90,50,N/A
+Chicagoland,80,160,80,267,107,N/A
+Daytona-2,50,100,50,160,60,N/A
+Kentucky,80,160,80,267,107,N/A
+New Hampshire,75,150,75,301,151,N/A
+Pocono-2,50,100,50,160,60,N/A
+Watkins Glen,20,40,20,90,50,N/A
+Michigan-2,60,120,60,200,80,N/A
+Bristol-2,125,250,125,500,250,N/A
+Darlington,100,200,100,367,167,N/A
+Indianapolis,50,100,50,160,60,N/A
+Las Vegas-2*,80,160,80,267,107,N/A
+Richmond-2*,100,200,100,400,200,N/A
+Charlotte-2* (road),25,50,25,109,59,N/A
+Dover-2*,120,240,120,400,160,N/A
+Talladega-2*,55,110,55,188,78,N/A
+Kansas-2*,80,160,80,267,107,N/A
+Martinsville-2*,130,260,130,500,240,N/A
+Texas-2*,85,170,85,334,164,N/A
+ISM-2* (Phoenix),75,150,75,312,162,N/A
+Miami*,80,160,80,267,107,N/A
